@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "krl-fe": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "krl-fe"
+    }
+  },
+  "defaultProject": "krl-fe",
+  "cli": {
+    "analytics": "4aa082e7-f300-4479-b0ce-11fdf2c2da72"
+  }
 }
