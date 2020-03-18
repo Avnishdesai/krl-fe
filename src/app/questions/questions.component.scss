@@ -1,0 +1,44 @@
+/* questionsComponent's private CSS styles */
+.questions {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+  }
+  .questions li {
+    cursor: pointer;
+    position: relative;
+    left: 20;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .6em 0;
+    // height: 2.5em;
+    border-radius: 4px;
+  }
+  .questions li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }
+  .questions li.selected {
+    background-color: #cfd8;
+    color: white;
+  }
+  .questions li.selected:hover {
+    background-color: #BBD;
+    color: white;
+  }
+  .questions .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color:#405061;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }

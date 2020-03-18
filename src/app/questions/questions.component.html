@@ -1,0 +1,30 @@
+<h2>Questions</h2>
+<ul class="questions">
+    <li *ngFor="let question of questions" 
+    (click)="onSelect(question)"
+    [class.selected]="question === selectedQuestion"
+    >
+        <div><span>id: </span>{{question.id}}</div>
+        <div>
+            <span>description: </span>
+            <input [(ngModel)]="question.description" placeholder="question"/>
+        </div>
+    </li>
+</ul>
+
+<h2>Details</h2>
+<div><span>id: </span></div>
+<div>
+<label>name:
+</label>
+</div>
+
+<div *ngIf="selectedQuestion">
+    <h2>{{selectedQuestion.description | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedQuestion.id}}</div>
+    <div>
+    <label>name:
+        <input [(ngModel)]="selectedQuestion.description" placeholder="name"/>
+    </label>
+    </div>
+</div>
