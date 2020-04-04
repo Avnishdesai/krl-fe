@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from '../objects/question';
-import { QuestionService } from '../services/question.service'
+import { Question } from '../../objects/question';
+import { QuestionService } from '../../services/question.service'
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from "@angular/forms";
 
 
@@ -21,13 +21,9 @@ export class QuestionsComponent implements OnInit {
   }
 
   questions: Question[];
-  isSubmitted = false;
 
   angForm = new FormGroup({
-    names: new FormArray([
-      new FormControl('', Validators.required),
-      new FormControl('', Validators.required),
-    ])
+    names: new FormArray([])
   });
 
   get names(): FormArray {

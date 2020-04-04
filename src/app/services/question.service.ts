@@ -13,7 +13,7 @@ export class QuestionService {
     private http: HttpClient,
     private messageService: MessageService) { }
   
-  private questionURL = 'http://localhost:8080'
+  private questionURL = 'http://localhost:8080/getQuestions'
 
 
   getQuestions(): Observable<Question[]> {

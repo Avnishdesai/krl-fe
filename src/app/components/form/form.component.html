@@ -1,0 +1,28 @@
+<form [formGroup]="angForm" (ngSubmit)="onSubmit()">
+
+    <label for="Members">Please select your name:</label>
+    <select formControlName="membersControl" id="members">
+      <option *ngFor="let member of members; let i = index" [value]="members[i].id">
+        {{members[i].name}}
+      </option>
+    </select>
+  
+    <div formArrayName="names">
+        <div *ngFor="let question of questions; index as idx">
+            <div>
+                <label>{{question.description}}:</label>
+                <div *ngFor="let answer of question.answers">
+
+                    <input id="{{question.description}}_{{answer.text}}" type="radio" value="{{answer.text}}" formControlName="{{idx}}">
+                    <label>{{answer.text}}</label>
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <br><br>
+    <button>submit</button>
+  </form>
