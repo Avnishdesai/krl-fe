@@ -1,8 +1,8 @@
 import { Member } from './member';
 import { Answer } from './answer';
 
-export interface formResponse {
-    member: Member
+export interface FormResponse {
+    memberId: number
     date: Date
-    answers: Answer[]
+    answerIds: number[]
 }

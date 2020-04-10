@@ -1,28 +1,35 @@
-<form [formGroup]="angForm" (ngSubmit)="onSubmit()">
-
+<form [formGroup]="memberForm" (ngSubmit)="onMemberSelect()">
     <label for="Members">Please select your name:</label>
     <select formControlName="membersControl" id="members">
       <option *ngFor="let member of members; let i = index" [value]="members[i].id">
         {{members[i].name}}
       </option>
     </select>
-  
-    <div formArrayName="names">
+    <br><br>
+    <button>submit</button>
+</form>
+
+<form [formGroup]="questionsForm" (ngSubmit)="onSubmit()">
+    <label for="Date">Select Date:</label>
+    <select formControlName="datesControl" id="dates">
+      <option *ngFor="let date of dates; let i = index" [value]="dates[i]">
+        {{dates[i]}}
+      </option>
+    </select>
+
+
+    <div formArrayName="questions">
         <div *ngFor="let question of questions; index as idx">
             <div>
                 <label>{{question.description}}:</label>
                 <div *ngFor="let answer of question.answers">
-
-                    <input id="{{question.description}}_{{answer.text}}" type="radio" value="{{answer.text}}" formControlName="{{idx}}">
-                    <label>{{answer.text}}</label>
-                    
-                    
+                    <input id="{{question.description}}_{{answer.text}}" type="radio" value="{{answer.id}}" formControlName="{{idx}}">
+                    <label>{{answer.text}}</label>  
                 </div>
-            </div>
-            
+            </div>     
         </div>
     </div>
-
     <br><br>
     <button>submit</button>
-  </form>
+</form>
+    
