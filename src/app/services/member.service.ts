@@ -3,6 +3,7 @@ import { MessageService } from './message.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Member } from '../objects/member';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class MemberService {
     private messageService: MessageService
   ) { }
 
-  private membersURL = 'http://localhost:8080/getMembers'
+  private membersURL = environment.remoteHost + '/getMembers'
 
   getMembers(): Observable<Member[]> {
     this.messageService.add('fetched members');

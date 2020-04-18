@@ -3,6 +3,7 @@ import { Question } from '../objects/question';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class QuestionService {
     private http: HttpClient,
     private messageService: MessageService) { }
   
-  private questionURL = 'http://localhost:8080/getQuestions'
+  private questionURL = environment.remoteHost + '/getQuestions'
 
 
   getQuestions(): Observable<Question[]> {
