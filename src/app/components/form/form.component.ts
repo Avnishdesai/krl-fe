@@ -6,6 +6,7 @@ import { MemberService } from '../../services/member.service'
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from "@angular/forms";
 import { ResponseService } from '../../services/response.service';
 import { FormResponse } from '../../objects/formResponse';
+import { HttpErrorResponse, HttpResponse } from '../../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-form',
@@ -27,11 +28,11 @@ export class FormComponent implements OnInit {
   questions: Question[]
 
   memberForm = new FormGroup({
-    membersControl: new FormControl('', Validators.required)
+    membersControl: new FormControl('', [Validators.required])
   })
 
   questionsForm = new FormGroup({
-    datesControl: new FormControl('', Validators.required),
+    datesControl: new FormControl('', [Validators.required]),
     questions: new FormArray([])
   })
 
@@ -68,7 +69,7 @@ export class FormComponent implements OnInit {
   }
 
   addNameField() {
-    this.questionControls.push(new FormControl('', Validators.required));
+    this.questionControls.push(new FormControl('', [Validators.required]));
   }
 
   onMemberSelect() {
@@ -80,7 +81,13 @@ export class FormComponent implements OnInit {
   onSubmit() {
     this.responseService.postResponse(this.buildResponseDTO())
       .subscribe(
-        function(response) { console.log("Success Response" + response)}
+        (response: HttpResponse<string>) => { 
+          this.questionsForm.reset()
+          alert("Response submitted.")},
+        (error: HttpErrorResponse) => {
+          console.log(error)
+          alert(error.error)
+        }
       )
   }
 

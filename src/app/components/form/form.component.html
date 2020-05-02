@@ -1,4 +1,4 @@
-<form [formGroup]="memberForm" (ngSubmit)="onMemberSelect()">
+<form [formGroup]="memberForm" (ngSubmit)="onMemberSelect()" ngNativeValidate>
     <label for="Members">Please select your name:</label>
     <select formControlName="membersControl" id="members">
       <option *ngFor="let member of members; let i = index" [value]="members[i].id">
@@ -6,10 +6,10 @@
       </option>
     </select>
     <br><br>
-    <button>submit</button>
+    <button type="submit" [disabled]="memberForm.invalid">submit</button>
 </form>
 
-<form [formGroup]="questionsForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="questionsForm" (ngSubmit)="onSubmit()" ngNativeValidate>
     <label for="Date">Select Date:</label>
     <select formControlName="datesControl" id="dates">
       <option *ngFor="let date of dates; let i = index" [value]="dates[i]">
@@ -30,6 +30,6 @@
         </div>
     </div>
     <br><br>
-    <button>submit</button>
+    <button type="submit" [disabled]="questionsForm.invalid">submit</button>
 </form>
     
